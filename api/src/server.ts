@@ -1,19 +1,12 @@
+import "reflect-metadata";
 import express, { request, response } from 'express';
+import "./database";
+import { router } from "./routes";
 
 const app = express();
 
-// app.get /users
+app.use(express.json()); // habilita o formato Json
 
-app.get("/", (request, response) =>{
-    return response.json({mensagem:"Hello World - NLW 4 "});
-});
-
-
-app.post("/",(request,response) =>{
-    return response.json({mensgame:"Os dados foram recebidos com sucesso!"});
-})
-
-
-
+app.use(router);
 
 app.listen(8080, () => console.log("Server is running!"));
